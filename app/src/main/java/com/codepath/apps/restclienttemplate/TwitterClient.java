@@ -23,8 +23,8 @@ import com.loopj.android.http.RequestParams;
 public class TwitterClient extends OAuthBaseClient {
 	public static final BaseApi REST_API_INSTANCE = TwitterApi.instance(); // Change this
 	public static final String REST_URL = "https://api.twitter.com/1.1"; // Change this, base API URL
-	public static final String REST_CONSUMER_KEY = "vFzhxGQN4OgS8pX02sPan5hbO";       // Change this
-	public static final String REST_CONSUMER_SECRET = "BgMO32lt6tyGMNg4VsLaIfgH0F2wOcDyFW3XcYCSqwb2SOE8EM"; // Change this
+	public static final String REST_CONSUMER_KEY = "y0xdYspeTGAv7N0F4ATWGCrbc";       // Change this
+	public static final String REST_CONSUMER_SECRET = "CDpzrQXH9jurd6a91CLpi6R9RmoNeJ9wbNoNFtHVZ2D8GdNsFW"; // Change this
 
 	// Landing page to indicate the OAuth flow worked in case Chrome for Android 25+ blocks navigation back to the app.
 	public static final String FALLBACK_URL = "https://codepath.github.io/android-rest-client-template/success.html";
@@ -60,4 +60,35 @@ public class TwitterClient extends OAuthBaseClient {
 	 *    i.e client.get(apiUrl, params, handler);
 	 *    i.e client.post(apiUrl, params, handler);
 	 */
+	public void sendTweet(String message, AsyncHttpResponseHandler handler) {
+		String apiUrl = getApiUrl("statuses/update.json");
+		// Can specify query string params directly or through RequestParams.
+		RequestParams params = new RequestParams();
+		params.put("status", message);
+		client.post(apiUrl, params, handler);
+	}
+	public void like(String id, AsyncHttpResponseHandler handler){
+        String apiUrl = getApiUrl("favorites/create.json");
+        RequestParams params = new RequestParams();
+        params.put("id", id);
+        client.post(apiUrl, params, handler);
+    }
+    public void unlike(String id, AsyncHttpResponseHandler handler){
+        String apiUrl = getApiUrl("favorites/destroy.json");
+        RequestParams params = new RequestParams();
+        params.put("id", id);
+        client.post(apiUrl, params, handler);
+    }
+    public void retweet(String id, AsyncHttpResponseHandler handler){
+        String apiUrl = getApiUrl("statuses/retweet/:id.json");
+        RequestParams params = new RequestParams();
+        params.put("id", id);
+        client.post(apiUrl, params, handler);
+    }
+    public void unretweet(String id, AsyncHttpResponseHandler handler){
+        String apiUrl = getApiUrl("statuses/unretweet/:id.json");
+        RequestParams params = new RequestParams();
+        params.put("id", id);
+        client.post(apiUrl, params, handler);
+    }
 }

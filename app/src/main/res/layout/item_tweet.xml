@@ -28,7 +28,8 @@
         android:layout_below="@+id/tvUserName"
         android:layout_marginLeft="5dp"
         android:layout_toEndOf="@+id/ivProfileImage"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textSize="12dp" />
 
     <TextView
         android:id="@+id/tvHandle"
@@ -45,4 +46,49 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:text="TextView" />
+
+    <ImageView
+        android:id="@+id/ivReply"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/vector_compose_shortcut"
+        android:layout_toEndOf="@+id/ivProfileImage"
+        android:layout_alignTop="@+id/ivLike" />
+
+    <ImageView
+        android:id="@+id/ivLike"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/ivReply"
+        android:layout_below="@+id/tvBody"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="35dp"
+        app:srcCompat="@drawable/ic_vector_heart_stroke" />
+
+    <ImageView
+        android:id="@+id/ivRT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_vector_retweet_stroke"
+        android:layout_above="@+id/tvLikeCount"
+        android:layout_marginLeft="80dp"
+        android:layout_alignLeft="@id/ivLike"
+        android:layout_marginEnd="18dp" />
+
+    <TextView
+        android:id="@+id/tvLikeCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/ivLike"
+        android:layout_below="@+id/ivLike"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/tvRTCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/ivRT"
+        android:layout_below="@+id/ivRT"
+        android:text="TextView" />
+
 </RelativeLayout>

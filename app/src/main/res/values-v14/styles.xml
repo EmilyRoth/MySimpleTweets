@@ -1,5 +1,7 @@
 <resources>
-
+    <color name="colorPrimary">#3F51B5</color><!--Background color for AppBar-->
+    <color name="colorPrimaryDark">#303F9F</color><!--i ignore its use-->
+    <color name="colorAccent">#FF4081</color><!--color effects, EditText, RadioButtons...-->
     <!--
         Base application theme for API 14+. This theme completely replaces
         AppBaseTheme from BOTH res/values/styles.xml and

@@ -6,11 +6,18 @@
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
         -->
+
     </style>
 
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
+
+    <style name="twitter" parent="Theme.AppCompat.Light.NoActionBar" >
+        <item name="colorPrimary">@color/twitter_blue</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+    </style>
+
 
 </resources>

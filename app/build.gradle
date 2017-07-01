@@ -7,6 +7,7 @@ android {
     defaultConfig {
         applicationId "com.codepath.apps.restclienttemplate"
         minSdkVersion 17
+        vectorDrawables.useSupportLibrary = true
         targetSdkVersion 25
     }
 
@@ -24,9 +25,12 @@ android {
     }
 }
 
+
 repositories {
     jcenter()
     maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    maven { url "https://maven.google.com" }
+
 }
 
 def dbflow_version = "4.0.3"
@@ -45,4 +49,9 @@ dependencies {
     compile 'com.loopj.android:android-async-http:1.4.9'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:recyclerview-v7:25.3.1'
+    compile 'com.android.support:support-v4:25.3.1'
+    compile 'org.parceler:parceler-api:1.1.6'
+    annotationProcessor 'org.parceler:parceler:1.1.6'
+
+
 }
