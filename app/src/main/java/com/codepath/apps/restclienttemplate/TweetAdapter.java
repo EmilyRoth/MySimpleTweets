@@ -85,11 +85,12 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
         holder.ivReply.setTag(tweet.user.screenName);
         holder.tvLikeCount.setText(Long.toString(tweet.favCount));
         holder.tvRTCount.setText(Long.toString(tweet.RTCount));
+
         client = TwitterApp.getRestClient();
 
 
         Glide.with(context).load(tweet.user.profileImageUrl).into(holder.ivProfileImage);
-
+          Glide.with(context).load(tweet.mediaURL).into(holder.ivMedia);
 
         holder.ivReply.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,6 +99,22 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
                 //startActivity(i)
                 i.putExtra("tvHandle", holder.ivReply.getTag().toString());
                 ((Activity)context).startActivityForResult(i, REQUEST_CODE);
+            }
+        });
+
+        holder.ivProfileImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context, FollowingActivity.class);
+                //startActivity(i)
+                i.putExtra("uid", (tweet.user.uid));
+                i.putExtra("screen_name", holder.tvHandle.getText().toString());
+                i.putExtra("user_name", tweet.user.name );
+                i.putExtra("followers_count", tweet.user.followersCount);
+                i.putExtra("following_count", tweet.user.followingCount);
+                i.putExtra("tagLine", tweet.user.tagLine);
+                i.putExtra("profileUrl", tweet.user.profileImageUrl);
+                ((Activity)context).startActivity(i);
             }
         });
         holder.ivLike.setOnClickListener(new View.OnClickListener(){
@@ -194,6 +211,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
         public ImageView ivRT;
         public TextView tvLikeCount;
         public TextView tvRTCount;
+        public ImageView ivMedia;
 
 
         public ViewHolder(View itemView){
@@ -209,6 +227,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
             ivRT = (ImageView) itemView.findViewById(R.id.ivRT);
             tvLikeCount = (TextView) itemView.findViewById(R.id.tvLikeCount);
             tvRTCount = (TextView) itemView.findViewById(R.id.tvRTCount);
+            ivMedia = (ImageView) itemView.findViewById(R.id.ivMedia);
 
 
         }

@@ -27,6 +27,9 @@ public class ComposeActivity extends AppCompatActivity {
     Tweet tweet;
     TextView tvCount;
     String handle;
+    //get instance and post to top of fragment
+    //how to tweet and go to the top
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -47,6 +47,7 @@
         android:layout_alignParentTop="true"
         android:text="TextView" />
 
+
     <ImageView
         android:id="@+id/ivReply"
         android:layout_width="30dp"
@@ -90,5 +91,13 @@
         android:layout_alignStart="@+id/ivRT"
         android:layout_below="@+id/ivRT"
         android:text="TextView" />
+
+    <ImageView
+        android:id="@+id/ivMedia"
+        android:layout_width="match_parent"
+        android:layout_height="12dp"
+        android:layout_below="@+id/tvBody"
+        android:layout_toEndOf="@+id/tvBody"
+        app:srcCompat="@android:color/black" />
 
 </RelativeLayout>

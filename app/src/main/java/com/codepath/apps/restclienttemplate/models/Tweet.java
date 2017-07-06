@@ -18,6 +18,7 @@ public class Tweet{
     public long favCount;
     public boolean RTStatus;
     public boolean favStatus;
+    public String mediaURL;
 
     public Tweet(){
 
@@ -34,6 +35,10 @@ public class Tweet{
         tweet.favCount = jsonObject.getLong("favorite_count");
         tweet.RTStatus = jsonObject.getBoolean("retweeted");
         tweet.favStatus = jsonObject.getBoolean("favorited");
+        if(jsonObject.has("entitiess")){
+            String[] types = {"urls", "media"};
+            tweet.mediaURL = ((JSONObject) jsonObject.getJSONObject("entities").getJSONArray("media").get(0)).getString("media_url");
+        }
         return tweet;
 
     }

@@ -35,7 +35,9 @@
         </activity>
         <activity android:name=".TimelineActivity" />
         <activity android:name=".ComposeActivity" />
-        <activity android:name=".detailActivity"></activity>
+        <activity android:name=".detailActivity" />
+        <activity android:name=".FollowingActivity" />
+        <activity android:name=".ProfileActivity" />
     </application>
 
 </manifest>
