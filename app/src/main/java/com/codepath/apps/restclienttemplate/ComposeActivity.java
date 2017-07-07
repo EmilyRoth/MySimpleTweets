@@ -81,6 +81,7 @@ public class ComposeActivity extends AppCompatActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
+                Tweet tweet = null;
                 try {
                     tweet = Tweet.fromJSON(response);
                 } catch (JSONException e) {
@@ -91,6 +92,7 @@ public class ComposeActivity extends AppCompatActivity {
                 data.putExtra("tweet", Parcels.wrap(tweet));
                 // ints work too
                 // Activity finished ok, return the data
+
                 setResult(RESULT_OK, data); // set result code and bundle data for response
                 finish(); // closes the activity, pass data to parent
             }

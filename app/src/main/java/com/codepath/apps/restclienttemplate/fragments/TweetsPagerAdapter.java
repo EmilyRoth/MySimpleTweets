@@ -20,14 +20,16 @@ import android.support.v4.app.FragmentPagerAdapter;
 public class TweetsPagerAdapter extends FragmentPagerAdapter {
     // return total num of fragments
     private HomeTimelineFragment homeTimelineFragment; // new code
+    private MentionTimelineFragment mentionTimelineFragment;
     private String tabTitles[] = new String [] {"Home", "Mentions"};
     private Context context;
-    public TweetsPagerAdapter(FragmentManager fm, Context context){
-        super(fm);
-        homeTimelineFragment = new HomeTimelineFragment(); // get new tweet
 
-        this.context = context;
+    public TweetsPagerAdapter(FragmentManager supportFragmentManager) {
+        super(supportFragmentManager);
+        homeTimelineFragment = new HomeTimelineFragment();
+        mentionTimelineFragment = new MentionTimelineFragment();
     }
+
     public int getCount(){
         return 2;
     }
@@ -37,9 +39,11 @@ public class TweetsPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) { //make switch meno
         if (position == 0){
-            return new HomeTimelineFragment(); //timeline fragment = getTimelineInstance; return timeline fragment
+            return homeTimelineFragment;
+            //return new HomeTimelineFragment(); //timeline fragment = getTimelineInstance; return timeline fragment
         }else if(position == 1){
-            return new MentionTimelineFragment();
+            return mentionTimelineFragment;
+           // return new MentionTimelineFragment();
         } else{
             return null;
         }

@@ -22,11 +22,11 @@ import java.util.ArrayList;
  * Created by emilylroth on 7/3/17.
  */
 
-public class TweetsListFragment extends Fragment {
+public class TweetsListFragment extends Fragment implements  TweetAdapter.TweetAdapterListener {
     //inflation happens inside onCreateView
-    TweetAdapter tweetAdapter;
-    ArrayList tweets;
-    RecyclerView rvTweets;
+    public TweetAdapter tweetAdapter;
+    public ArrayList tweets;
+    public RecyclerView rvTweets;
 
     @Nullable
     @Override
@@ -38,7 +38,7 @@ public class TweetsListFragment extends Fragment {
         //init arraylist
         tweets = new ArrayList<>();
         //construct adapter
-        tweetAdapter = new TweetAdapter(tweets);
+        tweetAdapter = new TweetAdapter(tweets, this);
         //RecyclerView setup (layout manager, use adapter)
         rvTweets.setLayoutManager(new LinearLayoutManager(getContext()));
         // set the adapter
@@ -51,9 +51,9 @@ public class TweetsListFragment extends Fragment {
             //convert object to tweet
             //add model to data source
             //notify the adapter that we've added an item
-
+            Tweet tweet = null;
             try {
-                Tweet tweet = Tweet.fromJSON(response.getJSONObject(i));
+                tweet = Tweet.fromJSON(response.getJSONObject(i));
                 tweets.add(tweet);
                 tweetAdapter.notifyItemInserted(tweets.size()-1);
             } catch (JSONException e) {
@@ -61,6 +61,11 @@ public class TweetsListFragment extends Fragment {
             }
 
         }
+
+    }
+
+    @Override
+    public void onItemSelected(View view, int position, String clickID) {
 
     }
 }

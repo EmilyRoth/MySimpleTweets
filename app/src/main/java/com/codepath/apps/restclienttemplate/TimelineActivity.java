@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.codepath.apps.restclienttemplate.fragments.HomeTimelineFragment;
 import com.codepath.apps.restclienttemplate.fragments.TweetsPagerAdapter;
 import com.codepath.apps.restclienttemplate.models.Tweet;
 import com.codepath.apps.restclienttemplate.models.User;
@@ -27,6 +28,7 @@ public class TimelineActivity extends AppCompatActivity {
     public User user;
     public String createdAt;
     private SwipeRefreshLayout swipeContainer;
+    private TweetsPagerAdapter pagerAdapter;
 
 
     @Override
@@ -56,7 +58,9 @@ public class TimelineActivity extends AppCompatActivity {
         //get view pager
         ViewPager vpPager = (ViewPager) findViewById(R.id.viewpager);
         //set the adapter
-        vpPager.setAdapter(new TweetsPagerAdapter(getSupportFragmentManager(), this));
+
+        pagerAdapter = new TweetsPagerAdapter(getSupportFragmentManager());
+        vpPager.setAdapter(pagerAdapter);
         //set up tablayout
         TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
         tabLayout.setupWithViewPager(vpPager);
@@ -136,6 +140,9 @@ public class TimelineActivity extends AppCompatActivity {
             // Toast the name to display temporarily on screen
             //Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
             Tweet tweet = (Tweet) Parcels.unwrap(data.getParcelableExtra("tweet"));
+            HomeTimelineFragment timelineFragment = (HomeTimelineFragment)pagerAdapter.getItem(0);
+            timelineFragment.addTweet(tweet);
+           // ((HomeTimelineFragment)pagerAdapter.getItem(position: 0)).addTweet(tweet);
 
             //timeline fragment to get item
         }    }

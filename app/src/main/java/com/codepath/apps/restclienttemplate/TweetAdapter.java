@@ -36,11 +36,16 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
     Context context;
     private final int REQUEST_CODE = 20;
     TwitterClient client;
+    TweetAdapterListener mListener;
 
 
+    public interface TweetAdapterListener{
+        public void onItemSelected(View view, int position, String clickID);
+    }
     // pass in tweets array into constructor
-    public TweetAdapter(List<Tweet> tweets){
+    public TweetAdapter(List<Tweet> tweets, TweetAdapterListener listener){
         mTweets = tweets;
+        mListener = listener;
     }
     //for each row inflate the layout and cache references into view holder
 
